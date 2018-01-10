@@ -1,5 +1,5 @@
 {
-  "name": "Crypto Currency App",
+  "name": "Crypto-Currency-App",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
