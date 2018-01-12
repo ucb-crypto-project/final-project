@@ -2,19 +2,19 @@ import axios from 'axios';
 
 export default {
   // Gets all coin prices
-  getCoinPrices: function() {
-    return axios.get("/api/coinprices");
+  getCoins: function() {
+    return axios.get("/api/coins");
   },
   // Gets the coin with the given id
-  getCoinPrice: function(id) {
-    return axios.get("/api/coinprices/" + id);
+  getCoin: function(id) {
+    return axios.get("/api/coins/" + id);
   },
   // Deletes the coin with the given id
-  deleteCoinPrice: function(id) {
-    return axios.delete("api/coinprices/" + id);
+  deleteCoin: function(id) {
+    return axios.delete("api/coins/" + id);
   },
   // Saves a coin to the database
-  saveCoinPrice: function(coinData) {
-    return axios.post("/api/coinprices", coinData);
+  saveCoin: function(coinData) {
+    return axios.post("/api/coins", coinData);
   }
 };
