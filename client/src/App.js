@@ -9,6 +9,7 @@ const App = () => (
   <Router>
     <div>
       <Nav />
+      <Coins />
       <Wrapper>
         <Route exact path="/" component={Home} />
       </Wrapper>
