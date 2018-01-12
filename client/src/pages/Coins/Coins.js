@@ -30,8 +30,8 @@ class Coins extends Component {
               <h1>What Coins Should I Study?</h1>
             </Jumbotron>
             <form>
-              <Input name="name" placeholder="Name (required)" />
               <Input name="symbol" placeholder="Symbol (required)" />
+              <Input name="price" placeholder="Price (required)" />
               <TextArea name="notes" placeholder="Notes (Optional)" />
               <FormBtn>Lookup Coin</FormBtn>
             </form>
@@ -46,7 +46,7 @@ class Coins extends Component {
                   <ListItem key={coin._id}>
                     <a href={"/coins/" + coin._id}>
                       <strong>
-                        {coin.name} by {coin.symbol}
+                        {coin.Symbol} by {coin.price}
                       </strong>
                     </a>
                     <DeleteBtn />
