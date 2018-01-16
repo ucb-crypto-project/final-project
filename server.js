@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const routes = require('./routes');
 const app = express();
+const passport = require('passport');
 const PORT = process.env.PORT || 3001;
 
 //Manage key config with local .env file
