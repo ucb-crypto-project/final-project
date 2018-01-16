@@ -19,6 +19,11 @@ class LoginForm extends Component {
    }
 
 
+   handleSubmit = event => {
+     event.preventDefault();
+     console.log(this.state);
+   }
+
   render() {
     return (
       <div style={{ height: 300, width: 500 }} className="login-form">
@@ -28,7 +33,7 @@ class LoginForm extends Component {
             name="email"
             label="Enter Email"
             id="email"
-            placeholder="Enter Email"
+            placeholder="Email Address"
             value={this.state.email}
             onChange={this.onInputChange}
           />
@@ -43,7 +48,7 @@ class LoginForm extends Component {
             onChange={this.onInputChange}
           />
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     )

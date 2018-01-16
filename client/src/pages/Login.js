@@ -6,6 +6,7 @@ import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
 
 class Login extends Component {
+
   state = {
     current_user_id: '',
     password: '',
@@ -14,6 +15,11 @@ class Login extends Component {
 
   componentDidMount() {
     //Initial API calls
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(event);
   }
 
   onInputChange = event => {
@@ -31,20 +37,9 @@ class Login extends Component {
       <Container fluid>
         <Row>
           <Col size="lg-12">
-            <Jumbotron>
-              <h1>Crypto Currncy Log In</h1>
-              <LoginForm onInputChange={this.onInputChange} />
-            </Jumbotron>
-
-            {/* <form>
-              <Input
-                placeholder="First Name"
-                name="fName"
-                value={this.state.fName}
-                onChange={this.onInputChange}
-              />
-              <FormBtn onClick={this.saveBook}>Submit Book</FormBtn>
-            </form> */}
+            <h1>Log In</h1>
+            <br />
+            <LoginForm onInputChange={this.onInputChange} />
           </Col>
         </Row>
       </Container>
