@@ -5,6 +5,9 @@ const routes = require('./routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//Manage key config with local .env file
+require('dotenv').config();
+
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -17,7 +20,7 @@ app.use(routes);
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
+  process.env.MONGODB_URI,
   {
     useMongoClient: true
   }

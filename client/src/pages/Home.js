@@ -36,7 +36,7 @@ class Home extends Component {
                 value={this.state.fName}
                 onChange={this.onInputChange}
               />
-              <FormBtn onClick={this.saveBook}>Submit Book</FormBtn> 
+              <FormBtn onClick={this.saveBook}>Submit Book</FormBtn>
             </form> */}
           </Col>
         </Row>
