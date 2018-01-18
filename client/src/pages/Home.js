@@ -3,6 +3,7 @@ import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
+import Coins from './Coins';
 
 class Home extends Component {
   state = {
@@ -28,6 +29,7 @@ class Home extends Component {
           <Col size="lg-12">
             <Jumbotron>
               <h1>Crypto Currncy Home Base</h1>
+              <Coins />
             </Jumbotron>
             {/* <form>
               <Input
