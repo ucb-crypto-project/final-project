@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import readline from 'readline';
 import API from '../utils/API';
-// var R = require('ramda');
+const binance = require('node-binance-api');
 
 class Coins extends React.Component {
 	// constructor method begins here:
@@ -15,24 +15,13 @@ class Coins extends React.Component {
   };
 
   componentDidMount() {
-    this.loadCoins();
+    API.getCoins();
   }
-
-  loadCoins = () => {
-    API.getCoins()
-    .then(res =>
-
-      this.setState({ coins: res.symbol[0] })
-    )
-    .catch(err => console.log(err));
-      console.log(this);
-  };
 
   render() {
     return (
       <h1>
         {this.state.title}
-        {this.state.coins}
       </h1>
     );
   }
