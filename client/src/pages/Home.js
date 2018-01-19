@@ -28,18 +28,8 @@ class Home extends Component {
         <Row>
           <Col size="lg-12">
             <Jumbotron>
-              <h1>Crypto Currncy Home Base</h1>
-              <Coins />
+              <h1>Crypto Currency Home Base</h1>
             </Jumbotron>
-            {/* <form>
-              <Input
-                placeholder="First Name"
-                name="fName"
-                value={this.state.fName}
-                onChange={this.onInputChange}
-              />
-              <FormBtn onClick={this.saveBook}>Submit Book</FormBtn>
-            </form> */}
           </Col>
         </Row>
       </Container>

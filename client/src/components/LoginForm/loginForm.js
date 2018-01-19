@@ -4,21 +4,6 @@ import './loginForm.css';
 
 class LoginForm extends Component {
 
-
-  state = {
-     email: '',
-     password: ''
-   };
-
-   onInputChange = event => {
-     const { name, value } = event.target
-
-     this.setState({
-       [name]: value
-     })
-   }
-
-
    handleSubmit = event => {
      event.preventDefault();
      console.log(this.state);
@@ -34,8 +19,7 @@ class LoginForm extends Component {
             label="Enter Email"
             id="email"
             placeholder="Email Address"
-            value={this.state.email}
-            onChange={this.onInputChange}
+            form={this}
           />
 
           <Input
@@ -44,8 +28,7 @@ class LoginForm extends Component {
             label="Password"
             id="password"
             placeholder="Enter Password"
-            value={this.state.password}
-            onChange={this.onInputChange}
+            form={this}
           />
 
           <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>

@@ -17,21 +17,6 @@ class Login extends Component {
     //Initial API calls
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(event);
-  }
-
-  onInputChange = event => {
-    console.log(event.target.name, event.target.value)
-
-    const { name, value } = event.target
-
-    this.setState({
-      [name]: value
-    })
-  }
-
   render() {
     return (
       <Container fluid>
@@ -39,7 +24,7 @@ class Login extends Component {
           <Col size="lg-12">
             <h1>Log In</h1>
             <br />
-            <LoginForm onInputChange={this.onInputChange} />
+            <LoginForm />
           </Col>
         </Row>
       </Container>
