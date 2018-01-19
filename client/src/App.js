@@ -4,7 +4,6 @@ import Nav from './components/Nav';
 import Wrapper from './components/Wrapper';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Coins from './pages/Coins';
 
 
 const App = () => (
@@ -14,9 +13,7 @@ const App = () => (
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/coins" component={Coins}/>
       </Wrapper>
-      {/* <Footer /> */}
     </div>
   </Router>
 );
