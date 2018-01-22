@@ -3,8 +3,7 @@ import axios from 'axios';
 import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
-const binance = require('node-binance-api');
-// var R = require('ramda');
+
 
 class Coins extends React.Component {
 	// constructor method begins here:
@@ -17,7 +16,8 @@ class Coins extends React.Component {
   };
 
   componentDidMount() {
-    API.getCoins();
+    API.getCoins()
+
   }
 
   render() {
