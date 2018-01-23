@@ -17,13 +17,13 @@ export default class Coins extends Component {
       }
 
       loadCoins = () => {
-        axios.get('https://api.coinmarketcap.com/v1/ticker/')
-        .then(function(response){
-          console.log('Response', response);
-          console.log('Response', response.data[0].name);
-              // this.setState({ name: response.data[0].name, symbol: response.data[0].symbol, rank: response.data[0].rank, price: response.data[0].price_usd })
-            })
-          }
+        API.getCoins()
+          .then(response =>
+          this.setState({ name: response.data[0].name, symbol: response.data[0].symbol, rank: response.data[0].rank, price: response.data[0].price_usd })
+        )
+        .catch(err => console.log(err));
+
+    };
 
   render(){
     return (
