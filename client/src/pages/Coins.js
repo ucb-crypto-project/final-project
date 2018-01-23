@@ -9,19 +9,21 @@ export default class Coins extends Component {
     name: "",
     symbol: "",
     rank: "",
-    price_usd: "",
+    price: "",
   }
   componentDidMount() {
-    axios.get('https://api.coinmarketcap.com/v1/ticker/')
-    .then(function(response){
-      console.log('Response', response);
-      console.log('Response', response.data[0].name);
-      console.log('Response', response.data[0].symbol);
-      console.log('Response', response.data[0].rank);
-      console.log('Response', response.data[0].price_usd);
+    this.loadCoins();
 
-        })
       }
+
+      loadCoins = () => {
+        axios.get('https://api.coinmarketcap.com/v1/ticker/')
+        .then(function(response){
+          console.log('Response', response);
+          console.log('Response', response.data[0].name);
+              // this.setState({ name: response.data[0].name, symbol: response.data[0].symbol, rank: response.data[0].rank, price: response.data[0].price_usd })
+            })
+          }
 
   render(){
     return (
@@ -30,6 +32,10 @@ export default class Coins extends Component {
           <Col size="lg-12">
             <Jumbotron>
               <h1>Coin Prices</h1>
+              {this.state.name}
+              {this.state.symbol}
+              {this.state.rank}
+              {this.state.price}
             </Jumbotron>
           </Col>
         </Row>
