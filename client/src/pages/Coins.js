@@ -1,40 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
-// var R = require('ramda');
 
-class Coins extends React.Component {
-	// constructor method begins here:
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      title: 'Binance Table',
-      coins: []
-    };
-  };
-
+export default class Coins extends Component {
+  state = {
+    coins:[]
+  }
   componentDidMount() {
-    API.getCoins();
-//   }
-//
-  render() {
+    axios.get('https://api.coinmarketcap.com/v1/ticker/')
+    .then(function(response){
+      console.log('Response', response);
+      console.log('Response', response.data[0]);
+
+        })
+      }
+
+  render(){
     return (
       <Container fluid>
         <Row>
           <Col size="lg-12">
             <Jumbotron>
-              <h1>
-                {this.state.title}
-              </h1>
+              <h1>Coin Prices</h1>
             </Jumbotron>
           </Col>
         </Row>
       </Container>
-    );
+    )
   }
 }
-
-export default Coins;
