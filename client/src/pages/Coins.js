@@ -6,13 +6,19 @@ import { Col, Row, Container } from '../components/Grid';
 
 export default class Coins extends Component {
   state = {
-    coins:[]
+    name: "",
+    symbol: "",
+    rank: "",
+    price_usd: "",
   }
   componentDidMount() {
     axios.get('https://api.coinmarketcap.com/v1/ticker/')
     .then(function(response){
       console.log('Response', response);
-      console.log('Response', response.data[0]);
+      console.log('Response', response.data[0].name);
+      console.log('Response', response.data[0].symbol);
+      console.log('Response', response.data[0].rank);
+      console.log('Response', response.data[0].price_usd);
 
         })
       }
