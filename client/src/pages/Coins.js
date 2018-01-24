@@ -36,35 +36,30 @@ export default class Coins extends Component {
   render(){
 
     return (
-      <div className="col-lg-5">
-      <table className="table table-responsive" style={{fontSize:'0.80rem'}}>
-      <thead className="thead-inverse">
+      <div>
       <Jumbotron>
       <h1>Coin Prices</h1>
       </Jumbotron>
+      <div className="col-lg-5">
+      <table className="table table-responsive" style={{fontSize:'0.80rem'}}>
+      <thead className="thead-inverse">
       <tr>
-        <th style={{width: '10%'}}>Rank</th>
+        <th>Rank</th>
         <th>SYMBOL</th>
         <th>NAME</th>
         <th className="text-right">PRICE ($)</th>
         </tr>
         </thead>
         <tbody>
-
-          <Container fluid>
-          <Row>
-          <Col size="lg-12">
               <tr key={this.state}>
                     <td>{this.state.rank}</td>
                     <td>{this.state.symbol}</td>
                     <td>{this.state.name}</td>
                     <td>{this.state.price}</td>
                 </tr>
-            </Col>
-          </Row>
-          </Container>
         </tbody>
       </table>
+    </div>
     </div>
     )
   }
