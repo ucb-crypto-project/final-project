@@ -14,9 +14,11 @@ module.exports = function (passport) {
       usernameField: 'email'
     },
     async function(username, password, done) {
+      console.log(`The username is ${username}`)
       // When a user tries to sign in this code runs
       try {
-        const dbUser = await db.User.findOne({ where: { username } })
+        const dbUser = await db.User.findOne({ email:  username })
+        console.log(dbUser);
         if ( !dbUser ) {
           return done(null, false, {
             message: 'Incorrect username.'
@@ -50,7 +52,7 @@ module.exports = function (passport) {
   // Deserializing is what populates the `user` property on the request object.
   // So whenever you see `req.user` in the code it's coming from this.
   passport.deserializeUser(({ id }, cb) => {
-    db.User.findOne({ where: { id }, attributes: [ 'username', 'id' ] })
+    db.User.findOne({_id: id})
       .then( user => {
         cb(null, user)
       })

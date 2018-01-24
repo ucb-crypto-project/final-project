@@ -15,9 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Serve up static assets
 app.use(express.static('client/build'));
-// Add routes, both API and view
-app.use(routes);
-// require('./routes/auth.js')(app, passport);
 
 
 // Set up promises with mongoose
@@ -40,6 +37,9 @@ app.use(session({
 require('./middleware/passport')(passport)
 app.use(passport.initialize())
 app.use(passport.session())
+
+// Add routes, both API and view
+app.use(routes);
 
 // Start the API server
 app.listen(PORT, function() {

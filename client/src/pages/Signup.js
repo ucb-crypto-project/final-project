@@ -40,7 +40,6 @@ class Login extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault()
-    console.log(event)
 
     const { email, password, newUser, first_name, last_name } = this.state
 
