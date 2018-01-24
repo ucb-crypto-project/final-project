@@ -6,20 +6,22 @@ const router = require('express').Router();
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require('../../middleware/isAuthenticated');
 
-router.post('/signup', function(req, res, next) {
+router.post('/signup', async function(req, res, next) {
   console.log(req.body);
-    const { email, password } = req.body
+
         try {
-          db.User.create(req.body)
-            .then(next(user))
-            .catch(err => console.log(err));
+          await db.User.create(req.body)
+          next()
         }
         catch (err) {
           res.json(err)
         }
-}, passport.authenticate('local'), ({ user }, res) => {
-   res.send({ user })
- });
+
+  }, passport.authenticate('local'), ({ user }, res) => {
+    console.log('testing')
+    console.log(res)
+    res.send({ user })
+  })
 
 // router.route('/signup')
 //   .post(function(req, res, next) {

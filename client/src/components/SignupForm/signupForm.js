@@ -4,22 +4,42 @@ import './signupForm.css';
 
 class LoginForm extends Component {
 
-   handleSubmit = event => {
-     // event.preventDefault();
-     console.log(this.state);
-   }
+   // handleSubmit = event => {
+   //   // event.preventDefault();
+   //   console.log(this.state);
+   // }
+
 
   render() {
+    const { form } = this.props
     return (
       <div style={{ height: 300, width: 500 }} className="login-form">
-        <form method="POST" action="/signup">
+        <form>
+          <Input
+            type="text"
+            name="first_name"
+            label="First Name"
+            id="fname"
+            placeholder="First Name"
+            form={form}
+          />
+
+          <Input
+            type="text"
+            name="last_name"
+            label="Last Name"
+            id="lname"
+            placeholder="Last Name"
+            form={form}
+          />
+
           <Input
             type="email"
             name="email"
             label="Enter Email"
             id="email"
             placeholder="Email Address"
-            form={this}
+            form={form}
           />
 
           <Input
@@ -28,10 +48,10 @@ class LoginForm extends Component {
             label="Password"
             id="password"
             placeholder="Enter Password"
-            form={this}
+            form={form}
           />
 
-          <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={form.handleFormSubmit}>Submit</button>
         </form>
       </div>
     )
