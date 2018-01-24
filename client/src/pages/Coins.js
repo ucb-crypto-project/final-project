@@ -13,7 +13,15 @@ export default class Coins extends Component {
   }
   componentDidMount() {
     this.loadCoins();
+    this.consoleCoins();
 
+      }
+
+      consoleCoins = () => {
+        API.getCoins()
+        .then(response =>
+        console.log(response) +
+        console.log(response.data[0]))
       }
 
       loadCoins = () => {
