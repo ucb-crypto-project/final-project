@@ -27,7 +27,19 @@ export default class Coins extends Component {
       loadCoins = () => {
         API.getCoins()
           .then(response =>
-          this.setState({ name: response.data[0].name, symbol: response.data[0].symbol, rank: response.data[0].rank, price: response.data[0].price_usd })
+              this.setState({
+                name: response.data[i].name,
+                symbol: response.data[i].symbol,
+                rank: response.data[i].rank,
+                price: response.data[i].price_usd })
+
+              for (var i = 0; i < response.data.length; i ++)
+              
+          // this.setState({
+          //   name: response.data[0].name,
+          //   symbol: response.data[0].symbol,
+          //   rank: response.data[0].rank,
+          //   price: response.data[0].price_usd })
         )
         .catch(err => console.log(err));
 
