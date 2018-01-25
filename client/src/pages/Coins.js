@@ -10,7 +10,9 @@ export default class Coins extends Component {
     symbol: "",
     rank: "",
     price: "",
+    coins: []
   }
+
   componentDidMount() {
     this.loadCoins();
     this.consoleCoins();
@@ -27,19 +29,8 @@ export default class Coins extends Component {
       loadCoins = () => {
         API.getCoins()
           .then(response =>
-              this.setState({
-                name: response.data[i].name,
-                symbol: response.data[i].symbol,
-                rank: response.data[i].rank,
-                price: response.data[i].price_usd })
+              this.setState({ coins: response.data })
 
-              for (var i = 0; i < response.data.length; i ++)
-              
-          // this.setState({
-          //   name: response.data[0].name,
-          //   symbol: response.data[0].symbol,
-          //   rank: response.data[0].rank,
-          //   price: response.data[0].price_usd })
         )
         .catch(err => console.log(err));
 
@@ -49,6 +40,7 @@ export default class Coins extends Component {
 
     return (
       <div>
+      <Container fluid>
       <Jumbotron>
       <h1>Coin Prices</h1>
       </Jumbotron>
@@ -63,15 +55,20 @@ export default class Coins extends Component {
         </tr>
         </thead>
         <tbody>
-              <tr key={this.state}>
-                    <td>{this.state.rank}</td>
-                    <td>{this.state.symbol}</td>
-                    <td>{this.state.name}</td>
-                    <td>{this.state.price}</td>
-                </tr>
+        {
+          this.state.coins.map((el, index) => (
+            <tr key={index} onClick = {() => this.do_something(el)}>
+              <td>{el.rank}</td>
+              <td>{el.symbol}</td>
+              <td>{el.name}</td>
+              <td>{el.price_usd}</td>
+            </tr>
+          ))
+        }
         </tbody>
       </table>
     </div>
+    </Container>
     </div>
     )
   }
