@@ -6,12 +6,20 @@ import { Input, TextArea, FormBtn } from '../components/Form';
 
 class Home extends Component {
   state = {
-    current_user_id: '',
+    current_coin: 'BTC',
   };
 
   componentDidMount() {
     //Initial API calls
+    this.searchCoins();
   }
+
+  searchCoins = () => {
+    API.firstSearch()
+      // .then(res => this.setState({ result: res.data }))
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
 
   onInputChange = event => {
     const { name, value } = event.target
