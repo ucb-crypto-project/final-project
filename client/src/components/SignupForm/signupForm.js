@@ -13,7 +13,7 @@ class LoginForm extends Component {
   render() {
     const { form } = this.props
     return (
-      <div style={{ height: 300, width: 500 }} className="login-form">
+      <div className="login-form">
         <form>
           <Input
             type="text"
