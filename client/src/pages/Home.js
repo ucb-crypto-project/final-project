@@ -7,19 +7,20 @@ import Chart from '../components/Chart';
 
 class Home extends Component {
   state = {
-    current_coin: 'BTC',
+    current_coin: 'ETH',
   };
 
   componentDidMount() {
     //Initial API calls
-    this.searchCoins('BTC');
+    this.searchCoins('ETH');
     console.log('Page loaded');
   }
 
   searchCoins = (coin) => {
+    console.log("Ran searchCoins")
     API.coinHistoryData(coin)
       // .then(res => this.setState({ result: res.data }))
-      .then(res => console.log(res))
+      .then(res => console.log(res.data.Data))
       .catch(err => console.log(err));
   };
 
@@ -39,7 +40,9 @@ class Home extends Component {
               <Jumbotron>
                 <h1>Crypto Currency Home Base</h1>
               </Jumbotron>
-              <Chart></Chart>
+              <Chart 
+                symbol={this.state.current_coin} 
+              />
             </Col>
           </Row>
         </Container>

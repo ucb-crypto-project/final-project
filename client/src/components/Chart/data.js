@@ -7,29 +7,68 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine,
         VictoryTheme } from 'victory';
 
 class Chart extends Component {
+
   state = {
-    name: "",
-    symbol: "",
+    name: "Bitcoin",
+    symbol: 'BTC',
     data: {}
   }
 
+
   componentDidMount() {
-    this.firstCoinData();
+    console.log('Current state:', this.state.symbol);
+    this.setState({symbol: this.props.symbol})
+    console.log('New state:', this.state.symbol);
+    this.firstCoinData(this.state.symbol);
+    console.log(`From Data.js for ${this.props.symbol}`)
 
   }
 
-  firstCoinData = () => {
-    API.coinHistoryData('BTC')
+  firstCoinData = (coin) => {
+    API.coinHistoryData(coin)
     .then(response => {
-      var coinHistoryData = JSON.parse(response);
-      console.log(coinHistoryData.Data[0]);
-      console.log(coinHistoryData.Data[1]);
+      var coinHistoryData = (response.data.Data);
+      // var jsonCoinData = JSON.parse(response);
+      console.log(coinHistoryData);
+      var convertedTime = this.timeConverter(coinHistoryData[0].time)
+      console.log(convertedTime);
+      var testData = this.formatedChartData(coinHistoryData);
+      console.log('Test Data: ', testData);
+      this.setState({
+        data: testData
+      });
     })
     .catch(err => console.log(err));
   }
 
+  timeConverter = (UNIX_timestamp) => {
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var sec = a.getSeconds();
+    var time = month + '/' + date;
+    return time;
+  }
+
+  formatedChartData = (input) => {
+    var tempArray = [];
+    for (var i = 0; i < input.length; i++) {
+      var formatedObject = {}
+      formatedObject.x = this.timeConverter(input[i].time);
+      formatedObject.y = input[i].close;
+      tempArray.push(formatedObject);
+    }
+    return tempArray;
+  }
+
 
   render() {
+    console.log('props: ', this.props.symbol);
+    console.log('data: ', this.state.data);
     return (
       <div>
         <Container fluid>
@@ -43,13 +82,7 @@ class Chart extends Component {
                   data: { stroke: "#c43a31" },
                   parent: { border: "1px solid #ccc"}
                 }}
-                data={[
-                  { x: 1, y: 2 },
-                  { x: 2, y: 3 },
-                  { x: 3, y: 5 },
-                  { x: 4, y: 4 },
-                  { x: 5, y: 7 }
-                ]}
+                data={this.state.data}
               />
             </VictoryChart>
           </div>
