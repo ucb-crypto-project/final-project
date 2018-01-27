@@ -3,6 +3,7 @@ import Jumbotron from '../components/Jumbotron';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
+import Chart from '../components/Chart';
 
 class Home extends Component {
   state = {
@@ -11,11 +12,12 @@ class Home extends Component {
 
   componentDidMount() {
     //Initial API calls
-    this.searchCoins();
+    this.searchCoins('BTC');
+    console.log('Page loaded');
   }
 
-  searchCoins = () => {
-    API.firstSearch()
+  searchCoins = (coin) => {
+    API.coinHistoryData(coin)
       // .then(res => this.setState({ result: res.data }))
       .then(res => console.log(res))
       .catch(err => console.log(err));
@@ -31,16 +33,17 @@ class Home extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="lg-12">
-            <Jumbotron>
-              <h1>Crypto Currency Home Base</h1>
-            </Jumbotron>
-          </Col>
-        </Row>
-      </Container>
-    );
+        <Container fluid>
+          <Row>
+            <Col size="lg-12">
+              <Jumbotron>
+                <h1>Crypto Currency Home Base</h1>
+              </Jumbotron>
+              <Chart></Chart>
+            </Col>
+          </Row>
+        </Container>
+    )
   }
 }
 

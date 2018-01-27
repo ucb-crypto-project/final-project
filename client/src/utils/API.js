@@ -4,12 +4,9 @@ import axios from "axios";
 
 export default {
 	// Gets all books
-	firstSearch: function() {
-		return axios.get("/api/search");
+	coinHistoryData: function(coin) {
+		return axios.get(`https://min-api.cryptocompare.com/data/histoday?fsym=${coin}&tsym=USD&limit=10&aggregate=1&e=CCCAGG`);
 	},
-	// Gets the book with the given id
-	getCoinData: function(id) {
-		return axios.get("/api/search/" + id);
-	},
+	
 	
 };
