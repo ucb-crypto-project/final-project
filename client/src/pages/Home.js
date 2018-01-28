@@ -12,17 +12,17 @@ class Home extends Component {
 
   componentDidMount() {
     //Initial API calls
-    this.searchCoins('ETH');
+    // this.searchCoins('ETH');
     console.log('Page loaded');
   }
 
-  searchCoins = (coin) => {
-    console.log("Ran searchCoins")
-    API.coinHistoryData(coin)
-      // .then(res => this.setState({ result: res.data }))
-      .then(res => console.log(res.data.Data))
-      .catch(err => console.log(err));
-  };
+  // searchCoins = (coin) => {
+  //   console.log("Ran searchCoins")
+  //   API.coinHistoryData(coin)
+  //     // .then(res => this.setState({ result: res.data }))
+  //     .then(res => console.log(res.data.Data))
+  //     .catch(err => console.log(err));
+  // };
 
   onInputChange = event => {
     const { name, value } = event.target

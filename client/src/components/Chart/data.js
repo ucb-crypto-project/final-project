@@ -3,22 +3,28 @@ import axios from 'axios';
 import Jumbotron from '../../components/Jumbotron';
 import API from '../../utils/API';
 import { Col, Row, Container } from '../../components/Grid';
-import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine,
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryContainer,
         VictoryTheme } from 'victory';
 
 class Chart extends Component {
 
-  state = {
-    name: "Bitcoin",
-    symbol: 'BTC',
-    data: {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Bitcoin",
+      symbol: this.props.symbol,
+      size: 'large',
+      data: {}
+    }
+    // this.handleClick = this.handleClick.bind(this);
+
   }
 
 
   componentDidMount() {
-    console.log('Current state:', this.state.symbol);
-    this.setState({symbol: this.props.symbol})
-    console.log('New state:', this.state.symbol);
+    // console.log('Current state:', this.state.symbol);
+    // this.setState({symbol: this.props.symbol})
+    // console.log('New state:', this.state.symbol);
     this.firstCoinData(this.state.symbol);
     console.log(`From Data.js for ${this.props.symbol}`)
 
@@ -29,13 +35,13 @@ class Chart extends Component {
     .then(response => {
       var coinHistoryData = (response.data.Data);
       // var jsonCoinData = JSON.parse(response);
-      console.log(coinHistoryData);
+      // console.log(coinHistoryData);
       var convertedTime = this.timeConverter(coinHistoryData[0].time)
-      console.log(convertedTime);
-      var testData = this.formatedChartData(coinHistoryData);
-      console.log('Test Data: ', testData);
+      // console.log(convertedTime);
+      var convertedData = this.formatedChartData(coinHistoryData);
+      console.log('Test Data: ', convertedData);
       this.setState({
-        data: testData
+        data: convertedData
       });
     })
     .catch(err => console.log(err));
@@ -67,20 +73,23 @@ class Chart extends Component {
 
 
   render() {
-    console.log('props: ', this.props.symbol);
-    console.log('data: ', this.state.data);
+    // console.log('props: ', this.props.symbol);
+    // console.log('data: ', this.state.data);
     return (
       <div>
-        <Container fluid>
+        <Container>
           <h2>Historical Prices</h2>
-          <div className="col-lg-5">
+          <div className="col-lg-8">
             <VictoryChart
               theme={VictoryTheme.material}
+              height={300}
+              width={600}
             >
               <VictoryLine
+                
                 style={{
-                  data: { stroke: "#c43a31" },
-                  parent: { border: "1px solid #ccc"}
+                  data: { stroke: "#c43a31", strokeWidth: 7 },
+                  parent: { border: "2px solid #ccc"}
                 }}
                 data={this.state.data}
               />
