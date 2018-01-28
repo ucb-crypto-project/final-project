@@ -35,7 +35,7 @@ class Chart extends Component {
     .then(response => {
       var coinHistoryData = (response.data.Data);
       // var jsonCoinData = JSON.parse(response);
-      // console.log(coinHistoryData);
+      console.log(response);
       var convertedTime = this.timeConverter(coinHistoryData[0].time)
       // console.log(convertedTime);
       var convertedData = this.formatedChartData(coinHistoryData);
@@ -78,12 +78,12 @@ class Chart extends Component {
     return (
       <div>
         <Container>
-          <h2>Historical Prices</h2>
-          <div className="col-lg-8">
+          <h2>Historical Prices - {this.state.symbol}</h2>
+          <div className="col-lg-7">
             <VictoryChart
               theme={VictoryTheme.material}
               height={300}
-              width={600}
+              width={550}
             >
               <VictoryLine
                 
@@ -102,37 +102,3 @@ class Chart extends Component {
 }
 
 export default Chart;
-
-// return (
-//       <div>
-//       <Container fluid>
-//       <Jumbotron>
-//       <h1>Coin Prices</h1>
-//       </Jumbotron>
-//       <div className="col-lg-5">
-//       <table className="table table-responsive" style={{fontSize:'0.80rem'}}>
-//       <thead className="thead-inverse">
-//       <tr>
-//         <th>Rank</th>
-//         <th>SYMBOL</th>
-//         <th>NAME</th>
-//         <th className="text-right">PRICE ($)</th>
-//         </tr>
-//         </thead>
-//         <tbody>
-//         {
-//           this.state.coins.map((el, index) => (
-//             <tr key={index} onClick = {() => this.do_something(el)}>
-//               <td>{el.rank}</td>
-//               <td>{el.symbol}</td>
-//               <td>{el.name}</td>
-//               <td>{el.price_usd}</td>
-//             </tr>
-//           ))
-//         }
-//         </tbody>
-//       </table>
-//     </div>
-//     </Container>
-//     </div>
-//     )
