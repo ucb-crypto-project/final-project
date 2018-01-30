@@ -17,11 +17,13 @@ const AuthInterface = (function() {
       Object.assign(AUTH_STATE, { loggedIn: true, user })
     },
 
-    async logout(history) {
+    async logout(history, that) {
+      console.log(that)
       Object.assign(AUTH_STATE, { loggedIn: false, user: {} })
 
-      await axios.get('/logout')
-      history.push('/login')
+      await axios.get('api/auth/logout')
+      // history.push('/')
+      that.setState({loggedIn: false})
 
     },
 

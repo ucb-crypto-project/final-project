@@ -4,8 +4,8 @@ export default {
 
   signup: credentials => ( axios.post('/api/auth/signup', credentials) ),
 
-  // login: credentials => ( axios.post('/login', credentials) ),
+  login: credentials => ( axios.post('api/auth/login', credentials) ),
   //
-  checkForSession: credentials => ( axios.get('/auth/session') ),
+  checkForSession: credentials => ( axios.get('/api/auth/session') ),
 
 };

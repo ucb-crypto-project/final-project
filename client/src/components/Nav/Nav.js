@@ -1,4 +1,5 @@
-import React from "react";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,7 +15,8 @@ const Nav = () => (
             {/* <a className="nav-link" href="#">Home </a> */}
           </li>
         </ul>
-        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
+        <Link to={'/signup'} className="btn btn-outline-success my-2 my-sm-0">Sign Up</Link>
+        {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button> */}
       </div>
     </div>
   </nav>

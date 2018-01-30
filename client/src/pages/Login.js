@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Jumbotron from '../components/Jumbotron';
 import LoginForm from '../components/LoginForm/loginForm';
+import { Redirect } from 'react-router-dom';
+import AuthInterface from '../utils/authInterface';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
@@ -8,23 +10,67 @@ import { Input, TextArea, FormBtn } from '../components/Form';
 class Login extends Component {
 
   state = {
-    current_user_id: '',
     password: '',
-    email: ''
-  };
-
-  componentDidMount() {
-    //Initial API calls
+    email: '',
+    loggedIn: false
   }
 
+  handleFormSubmit = event => {
+    console.log(event)
+    event.preventDefault()
+
+    const { email, password } = this.state
+
+    if ( !(email && password) ) return
+
+    const formInput = { email, password }
+    console.log(formInput)
+    API.login( formInput )
+      .then( res => {
+        const { errors, user } = res.data
+
+        if ( errors ) {
+          return this.setState({ errors })
+        }
+
+        AuthInterface.login( user )
+        this.setState({ loggedIn: true })
+
+      })
+      .catch(console.error)
+  }
+
+  componentDidMount() {
+    API.checkForSession()
+      .then( res => {
+        const { user } = res.data
+
+        if ( user ) {
+          AuthInterface.login( user )
+          this.setState({ loggedIn: true })
+        }
+      })
+      .catch(() => {})
+    }
+
   render() {
+    const { loggedIn } = this.state
+
+    if ( loggedIn ) {
+      return (
+        <Redirect to='/' />
+      )
+    }
+
     return (
       <Container fluid>
         <Row>
           <Col size="lg-12">
             <h1>Log In</h1>
             <br />
-            <LoginForm />
+            <LoginForm
+              form={this}
+             />
           </Col>
         </Row>
       </Container>

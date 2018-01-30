@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input, FormBtn } from '../Form';
 import './signupForm.css';
 
-class LoginForm extends Component {
+class SignupForm extends Component {
 
    // handleSubmit = event => {
    //   // event.preventDefault();
@@ -58,4 +58,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default SignupForm;
