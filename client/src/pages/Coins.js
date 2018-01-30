@@ -12,7 +12,7 @@ export default class Coins extends Component {
     rank: "",
     price: "",
     coins: [],
-    most_updated:{}
+    most_updated: {}
   }
 
   componentDidMount() {
@@ -50,19 +50,20 @@ export default class Coins extends Component {
 
   };
 
-  all_coins = this.state.coins;
 
   update_values = () => {
-    
+
 
     try {
       // console.log("State: ", this.state.most_updated);
+      let all_coins = this.state.coins;
+
       this.state.coins.map((el, index) => {
         // Name equal updated version name
         if (el.long === this.state.most_updated.msg.long) {
           // TODO
           // Update the state
-
+          all_coins[index] = this.state.most_updated.msg;
 
         } else {
           // Do something else
@@ -71,17 +72,19 @@ export default class Coins extends Component {
 
       });
 
+
     } catch (error) {
       console.log("Loading..");
     }
   };
 
-  componentDidUpdate(){
+  componentDidUpdate() {
     this.update_values();
+
   }
 
   render() {
-    
+
 
 
     return (
