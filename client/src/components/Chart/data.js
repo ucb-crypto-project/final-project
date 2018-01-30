@@ -6,43 +6,66 @@ import { Col, Row, Container } from '../../components/Grid';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryContainer,
         VictoryTheme } from 'victory';
 
+var coinList = ['BTC', 'ETH', 'XRP'];
+
 class Chart extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      name: "Bitcoin",
       symbol: this.props.symbol,
-      size: 'large',
-      data: {}
+      data: {},
+      BTC_data: {},
+      ETH_data: {},
+      XRP_data: {},
+      BCH_data: {}
     }
-    // this.handleClick = this.handleClick.bind(this);
+    
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
 
   }
-
 
   componentDidMount() {
     // console.log('Current state:', this.state.symbol);
     // this.setState({symbol: this.props.symbol})
     // console.log('New state:', this.state.symbol);
-    this.firstCoinData(this.state.symbol);
-    console.log(`From Data.js for ${this.props.symbol}`)
+    for (var i = 0; i < coinList.length; i++) {
+      this.firstCoinData(coinList[i]);
+      // var coinKey = `${coinList[i]}_data`
+      // console.log(`${coinList[i]} data: `, this.state.coinKey)
+    }
 
   }
 
   firstCoinData = (coin) => {
+    console.log('Coin: ', coin);
     API.coinHistoryData(coin)
     .then(response => {
       var coinHistoryData = (response.data.Data);
       // var jsonCoinData = JSON.parse(response);
-      console.log(response);
       var convertedTime = this.timeConverter(coinHistoryData[0].time)
       // console.log(convertedTime);
       var convertedData = this.formatedChartData(coinHistoryData);
-      console.log('Test Data: ', convertedData);
-      this.setState({
-        data: convertedData
-      });
+      console.log(`${coin} data: `, convertedData);
+      var coinKey = `${coin}_data`;
+      console.log('CoinKey: ', coinKey);
+
+      if(coin === this.state.symbol) {
+        console.log('coin = symbol', coin, this.state.symbol)
+        this.setState({
+          data: convertedData,
+          coinKey: convertedData
+        })
+        console.log(this.state.data)
+      }
+      else {
+        console.log('YES')
+        this.setState({
+          coinKey: convertedData
+        })
+      }
+      console.log(`${coinKey} data updated state: `, this.state.coinKey)
     })
     .catch(err => console.log(err));
   }
@@ -71,6 +94,41 @@ class Chart extends Component {
     return tempArray;
   }
 
+  handleInputChange = event => {
+    // Getting the value and name of the input which triggered the change
+    const { name, value } = event.target;
+
+    // Updating the input's state
+    this.setState({
+      [name]: value
+    });
+
+  }
+
+  handleFormSubmit = event => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
+    let { data } = event.target;
+
+    event.preventDefault();
+    let coinKey = `${this.state.symbol}_data`;
+    console.log(`CoinKey: ${coinKey} Symbol: ${this.state.symbol}`);
+    // let tempData = {};
+    console.log(`${coinKey} data: `, this.state.coinKey)
+    let tempData = this.state.coinKey;
+    console.log(`Temp data =`, tempData);
+
+    this.setState({
+      data : tempData
+    });
+    console.log('Set state...');
+    // console.log(`CoinKey = ${coinKey}`);
+    // console.log(`${coinKey} data: `, this.state.coinKey)
+    // console.log(`Current coin =`, this.state.symbol);
+    // console.log(`Current data =`, this.state.data);
+    console.log('data: ', this.state.data);
+
+  }
+
 
   render() {
     // console.log('props: ', this.props.symbol);
@@ -79,6 +137,16 @@ class Chart extends Component {
       <div>
         <Container>
           <h2>Historical Prices - {this.state.symbol}</h2>
+          <form className="form" onSubmit={this.handleFormSubmit}>
+            <input
+              value={this.state.symbol}
+              name='symbol'
+              onChange={this.handleInputChange}
+              type="text"
+              placeholder="Search for a coin..."
+            />
+            <button onClick={this.handleFormSubmit}>Search</button>
+          </form>
           <div className="col-lg-7">
             <VictoryChart
               theme={VictoryTheme.material}
