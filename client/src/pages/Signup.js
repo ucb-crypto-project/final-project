@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Jumbotron from '../components/Jumbotron';
 import SignupForm from '../components/SignupForm/signupForm';
+import Nav from '../components/Nav';
 import AuthInterface from '../utils/authInterface';
 import { Redirect } from 'react-router-dom';
 import API from '../utils/API';
@@ -74,17 +75,22 @@ class Login extends Component {
     }
 
     return (
-      <Container fluid>
-        <Row>
-          <Col size="lg-12">
-            <h1>Sign Up</h1>
-            <br />
-            <SignupForm
-              form={this}
-            />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Nav
+          page={this}
+        />
+        <Container fluid>
+          <Row>
+            <Col size="lg-12">
+              <h1>Sign Up</h1>
+              <br />
+              <SignupForm
+                form={this}
+              />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }

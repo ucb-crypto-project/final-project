@@ -6,12 +6,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Coins from './pages/Coins';
+import './base.css';
 
 
 const App = () => (
   <Router>
     <div>
-      <Nav />
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
