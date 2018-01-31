@@ -53,6 +53,8 @@ class Home extends Component {
               )  : (
                 <Link to={'/login'} className="btn btn-primary my-2 my-sm-0">Log In</Link>
               ) }
+              <br/><br/>
+              <Link to={'/coins'} className="btn btn-outline-info my-2 my-sm-0">Real Time Coin Data</Link>
             </div>
             </Jumbotron>
           </Col>

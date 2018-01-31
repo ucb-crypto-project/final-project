@@ -8,7 +8,7 @@ const Nav = () => (
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a className="navbar-brand" href="#">CryptoBase</a>
+        <Link to={'/'} className="navbar-brand">CryptoBase</Link>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item active">
             {/* TODO Change to Link for React Routing */}
