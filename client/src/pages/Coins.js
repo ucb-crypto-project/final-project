@@ -52,8 +52,6 @@ export default class Coins extends Component {
 
 
   update_values = () => {
-
-
     try {
       // console.log("State: ", this.state.most_updated);
       let all_coins = this.state.coins;
@@ -64,10 +62,6 @@ export default class Coins extends Component {
           // TODO
           // Update the state
           all_coins[index] = this.state.most_updated.msg;
-
-        } else {
-          // Do something else
-          console.log("Checking if it is not equal");
         }
 
       });
@@ -78,13 +72,9 @@ export default class Coins extends Component {
     }
   };
 
-  componentDidUpdate() {
-    this.update_values();
-
-  }
-
   render() {
 
+    this.update_values();
 
 
     return (
