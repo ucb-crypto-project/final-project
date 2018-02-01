@@ -10,7 +10,7 @@ class Charts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      current_coin: 'BTC'
+      current_coin: this.props.match.params.name
     }
 
   }
@@ -50,9 +50,6 @@ class Charts extends Component {
         <Container fluid>
           <Row>
             <Col size="lg-12">
-              <Jumbotron>
-                <h1>Crypto Currency Home Base</h1>
-              </Jumbotron>
               <Chart 
                 symbol={this.state.current_coin} 
               />

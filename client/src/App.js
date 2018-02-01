@@ -14,7 +14,7 @@ const App = () => (
       <Wrapper>
         <Route exact path="/" component={Home} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/charts" component={Charts} />
+        <Route exact path="/charts/:name" component={Charts} />
       </Wrapper>
     </div>
   </Router>
