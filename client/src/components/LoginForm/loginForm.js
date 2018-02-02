@@ -11,7 +11,7 @@ class LoginForm extends Component {
     console.log(form.handleFormSubmit)
 
     return (
-      <div style={{ height: 300, width: 500 }} className="login-form">
+      <div className="login-form">
         <form>
           <Input
             type="email"
