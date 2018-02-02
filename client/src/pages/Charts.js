@@ -37,7 +37,7 @@ class Charts extends Component {
         <div className="chart">
         <Row>
           
-            <Col size="md-2"></Col>
+            <Col size="md-1"></Col>
 
             <Col size="md-10">
               

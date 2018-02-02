@@ -3,7 +3,7 @@ import axios from 'axios';
 import Jumbotron from '../../components/Jumbotron';
 import API from '../../utils/API';
 import { Col, Row, Container } from '../../components/Grid';
-import HistoryBtn from '../../components/Buttons';
+import '../../components/Buttons/Button.css';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryContainer,
         VictoryTheme } from 'victory';
 
@@ -46,7 +46,7 @@ class Chart extends Component {
     var current_fixed = current_price.toFixed(2);
     var changeAmt = current_price - first_price;
     var fixedNum = changeAmt.toFixed(2);
-    var changePct = (changeAmt / this.state.ten_day[0].y) * 100;
+    var changePct = (changeAmt / first_price) * 100;
     var fixedPct = changePct.toFixed(2);
     this.setState({
       data : this.state.ten_day,
@@ -58,9 +58,12 @@ class Chart extends Component {
   }
 
   handle30Click() {
-    var changeAmt = this.state.thirty_day[this.state.thirty_day.length - 1].y - this.state.thirty_day[0].y;
+    var current_price = this.state.thirty_day[this.state.thirty_day.length - 1].y;
+    var first_price = this.state.thirty_day[0].y;
+    var current_fixed = current_price.toFixed(2);
+    var changeAmt = current_price - first_price;
     var fixedNum = changeAmt.toFixed(2);
-    var changePct = (changeAmt / this.state.thirty_day[0].y) * 100;
+    var changePct = (changeAmt / first_price) * 100;
     var fixedPct = changePct.toFixed(2);
 
     this.setState({
@@ -73,10 +76,13 @@ class Chart extends Component {
   }
 
   handle90Click() {
-    var changeAmt = this.state.ninety_day[this.state.ninety_day.length - 1].y - this.state.ninety_day[0].y;
+    var current_price = this.state.ninety_day[this.state.ninety_day.length - 1].y;
+    var first_price = this.state.ninety_day[0].y;
+    var current_fixed = current_price.toFixed(2);
+    var changeAmt = current_price - first_price;
     var fixedNum = changeAmt.toFixed(2);
     console.log(fixedNum);
-    var changePct = (changeAmt / this.state.ninety_day[0].y) * 100;
+    var changePct = (changeAmt / first_price) * 100;
     var fixedPct = changePct.toFixed(2);
     console.log(fixedPct);
 
@@ -166,9 +172,11 @@ class Chart extends Component {
     // console.log('data: ', this.state.data);
     return (
       <div>
-        <Container>
+        <Container fluid>
           <h2>Current Price of {this.state.symbol} &nbsp;&nbsp;= &nbsp;&nbsp;${this.state.current_price}</h2>
-          <h3>Amount Change Since &nbsp; {this.state.fromDay} &nbsp;&nbsp;&nbsp;  ${this.state.fromDayChange_amt} &nbsp;&nbsp; ({this.state.fromDayChange_pct}%)</h3>
+          <div className='col-lg-10'>
+            <h3 id={(this.state.fromDayChange_amt > 0) ? 'positive' : 'negative'}>Amount Change Since &nbsp; {this.state.fromDay} &nbsp;&nbsp;&nbsp;  ${this.state.fromDayChange_amt} &nbsp;&nbsp; ({this.state.fromDayChange_pct}%)</h3>
+          </div>
           <div className="col-lg-10">
             <VictoryChart padding={{ left: 60, top: 50, right: 0, bottom: 20 }}
               theme={VictoryTheme.material}
@@ -184,14 +192,15 @@ class Chart extends Component {
                 data={this.state.data}
               />
               <VictoryAxis 
-                styles={{labels: {fontSize: 30}} } 
                 dependentAxis tickFormat={(tick) => `$${(tick)}`}
 
               />
             </VictoryChart>
-            <HistoryBtn name='10' onClick={this.handle10Click} />
-            <HistoryBtn name='30' onClick={this.handle30Click} />
-            <HistoryBtn name='90' onClick={this.handle90Click} />
+            
+            <div className="btn btn-outline-success history-btn" onClick={this.handle10Click}> 10 Day</div>
+            <div className="btn btn-outline-success history-btn" onClick={this.handle30Click}> 30 Day</div>
+            <div className="btn btn-outline-success history-btn" onClick={this.handle90Click}> 90 Day</div>
+
           </div>
         </Container>
       </div>
