@@ -6,6 +6,7 @@ import API from '../utils/API';
 import AuthInterface from '../utils/authInterface';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
+import Coins from '../components/CoinTable';
 
 class Home extends Component {
   state = {
@@ -50,18 +51,38 @@ class Home extends Component {
           <Row>
             <Col size="lg-12">
               <Jumbotron>
-                <img src="/crypto.svg" className="logo"></img>
-                <h1>Crypto Currency Home Base</h1>
-                <div>
-                  { this.state.loggedIn ? (<div> <p>Current User Email: {this.state.currentUser.email}</p>
+                <Row>
+                  <Col size="md-2"></Col>
+                  <Col size="md-1">
+                    <img src="/crypto.svg" className="logo"></img>
+
+                  </Col>
+                  <Col size="md-9">
+                    <h1>Crypto Currency Home Base</h1>
+                    <div>
+                      { this.state.loggedIn ? (<div> <p className="welcome-msg">Welcome {this.state.currentUser.first_name}</p>
+                      </div>
+                    )  : ( <br/>) }
+                    <br/><br/>
+                    <Link to={'/coins'} className="btn btn-outline-info my-2 my-sm-0">Real Time Coin Data</Link>
                   </div>
-                )  : ( <br/>) }
-                <br/><br/>
-                <Link to={'/coins'} className="btn btn-outline-info my-2 my-sm-0">Real Time Coin Data</Link>
-              </div>
+                  </Col>
+                  <Col size="md-3"></Col>
+                </Row>
             </Jumbotron>
           </Col>
         </Row>
+        
+        <Row>
+          <Col size="md-2"></Col>
+
+          <Col size="md-8">
+            <Coins />
+          </Col>
+
+          <Col size="md-2"></Col>
+        </Row>
+
       </Container>
       </div>
     );

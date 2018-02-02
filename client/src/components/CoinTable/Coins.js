@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Jumbotron from '../components/Jumbotron';
-import API from '../utils/API';
-import { Col, Row, Container } from '../components/Grid';
+import Jumbotron from '../Jumbotron';
+import API from '../../utils/API';
+import { Col, Row, Container } from '../Grid';
 import openSocket from 'socket.io-client';
+import './Coins.css';
 
 export default class Coins extends Component {
   state = {
@@ -79,12 +80,7 @@ export default class Coins extends Component {
 
     return (
       <div>
-        <Container fluid>
-          <Jumbotron>
-            <h1>Coin Prices</h1>
-          </Jumbotron>
-          <div className="col-lg-5">
-            <table className="table table-responsive" style={{ fontSize: '0.80rem' }}>
+            <table className="table table-responsive coin-table" style={{ fontSize: '0.90rem' }}>
               <thead className="thead-inverse">
                 <tr>
                   <th>Rank</th>
@@ -96,7 +92,7 @@ export default class Coins extends Component {
               <tbody>
                 {
                   this.state.coins.map((el, index) => (
-                    <tr key={index} onClick={() => this.do_something(el)}>
+                    <tr key={index} onClick={() => console.log(this)}>
                       <td>{index + 1}</td>
                       <td>{el.long}</td>
                       <td>{el.short}</td>
@@ -106,8 +102,6 @@ export default class Coins extends Component {
                 }
               </tbody>
             </table>
-          </div>
-        </Container>
       </div>
     )
   }

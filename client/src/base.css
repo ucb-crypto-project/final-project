@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  color: #dbd9d9;
+  color: #28a745;
   text-align: center;
 }
 
@@ -26,18 +26,23 @@ h1 {
   margin: 0 10px;
 }
 
+.welcome-msg {
+  text-align: center;
+  color: #197ab4;
+}
+
 
 @keyframes float {
 	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		/* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
 		transform: translatey(0px);
 	}
 	50% {
-		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		/* box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2); */
 		transform: translatey(-10px);
 	}
 	100% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		/* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
 		transform: translatey(0px);
 	}
 }

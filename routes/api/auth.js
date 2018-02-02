@@ -36,9 +36,9 @@ router.get('/logout', (req, res) => {
 
 // Route for client to check if there's still a live server session
 router.get('/session', isAuthenticated, (req, res) => {
-  const { email, id } = req.user
+  const { email, id, first_name, last_name } = req.user
   console.log(`This is the email: ${email}, this is the ID ${id}`)
-  res.json({ user: { email, id }})
+  res.json({ user: { email, id, first_name, last_name }})
 })
 
 //, passport.authenticate('local'), ({ user }, res) => {
