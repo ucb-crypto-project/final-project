@@ -3,6 +3,7 @@ import axios from 'axios';
 import Jumbotron from '../Jumbotron';
 import API from '../../utils/API';
 import { Col, Row, Container } from '../Grid';
+import { Link } from 'react-router-dom';
 import openSocket from 'socket.io-client';
 import './Coins.css';
 
@@ -80,13 +81,14 @@ export default class Coins extends Component {
 
     return (
       <div>
-            <table className="table table-responsive coin-table" style={{ fontSize: '0.90rem' }}>
+            <table className="table coin-table" style={{ }}>
               <thead className="thead-inverse">
                 <tr>
                   <th>Rank</th>
                   <th>SYMBOL</th>
                   <th>NAME</th>
                   <th >PRICE ($)</th>
+                  <th>HISTORICAL CHART</th>
                 </tr>
               </thead>
               <tbody>
@@ -96,7 +98,10 @@ export default class Coins extends Component {
                       <td>{index + 1}</td>
                       <td>{el.long}</td>
                       <td>{el.short}</td>
-                      <td>{el.price}</td>
+                      <td>${el.price}</td>
+                      <td className="align-center">
+                        <Link to={`/charts/${el.short}`} className="btn btn-outline-primary my-2 my-sm-0">View</Link>
+                      </td>
                     </tr>
                   ))
                 }

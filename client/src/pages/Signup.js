@@ -81,13 +81,15 @@ class Login extends Component {
         />
         <Container fluid>
           <Row>
-            <Col size="lg-12">
-              <h1>Sign Up</h1>
+            <Col size="lg-4"></Col>
+            <Col size="lg-4">
+              <span className="page-title">Sign Up</span>
               <br />
               <SignupForm
                 form={this}
               />
             </Col>
+            <Col size="lg-4"></Col>
           </Row>
         </Container>
       </div>

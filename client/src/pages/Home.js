@@ -57,14 +57,14 @@ class Home extends Component {
                     <img src="/crypto.svg" className="logo"></img>
 
                   </Col>
-                  <Col size="md-9">
+                  <Col size="md-6">
                     <h1>Crypto Currency Home Base</h1>
                     <div>
                       { this.state.loggedIn ? (<div> <p className="welcome-msg">Welcome {this.state.currentUser.first_name}</p>
                       </div>
                     )  : ( <br/>) }
                     <br/><br/>
-                    <Link to={'/coins'} className="btn btn-outline-info my-2 my-sm-0">Real Time Coin Data</Link>
+                    <h3>Real Time Price Data</h3>
                   </div>
                   </Col>
                   <Col size="md-3"></Col>
@@ -72,7 +72,7 @@ class Home extends Component {
             </Jumbotron>
           </Col>
         </Row>
-        
+
         <Row>
           <Col size="md-2"></Col>
 

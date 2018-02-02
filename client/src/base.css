@@ -8,9 +8,20 @@ h1 {
   text-align: center;
 }
 
+h3 {
+  text-align: center;
+  color: #9f1717;
+}
+
+.jumbotron {
+  padding: 4rem 2rem 0rem 2rem !important;
+  margin-bottom: 0 !important;
+}
+
 .page-title {
   font-size: 30px;
   line-height: 60px;
+  text-align: center;
 }
 
 .logo {

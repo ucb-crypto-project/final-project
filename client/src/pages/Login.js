@@ -70,13 +70,15 @@ class Login extends Component {
         />
         <Container fluid>
           <Row>
-            <Col size="lg-12">
+            <Col size="lg-4"></Col>
+            <Col size="lg-4">
               <span className="page-title">Log In</span>
               <br />
               <LoginForm
                 form={this}
               />
             </Col>
+            <Col size="lg-4"></Col>
           </Row>
         </Container>
       </div>
