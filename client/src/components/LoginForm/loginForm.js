@@ -4,12 +4,12 @@ import './loginForm.css';
 
 class LoginForm extends Component {
 
-   handleSubmit = event => {
-     event.preventDefault();
-     console.log(this.state);
-   }
-
   render() {
+
+    const { form } = this.props
+
+    console.log(form.handleFormSubmit)
+
     return (
       <div style={{ height: 300, width: 500 }} className="login-form">
         <form>
@@ -19,7 +19,7 @@ class LoginForm extends Component {
             label="Enter Email"
             id="email"
             placeholder="Email Address"
-            form={this}
+            form={form}
           />
 
           <Input
@@ -28,10 +28,10 @@ class LoginForm extends Component {
             label="Password"
             id="password"
             placeholder="Enter Password"
-            form={this}
+            form={form}
           />
 
-          <button type="submit" className="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
+          <button type="submit" className="btn btn-primary" onClick={form.handleFormSubmit}>Submit</button>
         </form>
       </div>
     )

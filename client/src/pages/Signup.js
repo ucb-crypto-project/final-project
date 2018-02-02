@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Jumbotron from '../components/Jumbotron';
-import LoginForm from '../components/LoginForm/loginForm';
+import SignupForm from '../components/SignupForm/signupForm';
 import Nav from '../components/Nav';
-import { Redirect } from 'react-router-dom';
 import AuthInterface from '../utils/authInterface';
+import { Redirect } from 'react-router-dom';
 import API from '../utils/API';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
@@ -11,22 +11,45 @@ import { Input, TextArea, FormBtn } from '../components/Form';
 class Login extends Component {
 
   state = {
-    password: '',
     email: '',
-    loggedIn: false
+    password: '',
+    newUser: false,
+    loggedIn: false,
+    first_name: '',
+    last_name: ''
+  }
+
+  componentDidMount() {
+    API.checkForSession()
+      .then( res => {
+        const { user } = res.data
+
+        if ( user ) {
+          AuthInterface.login( user )
+          this.setState({ loggedIn: true })
+        }
+      })
+      .catch(() => {})
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target
+    this.setState({
+      [name]: value
+    })
   }
 
   handleFormSubmit = event => {
-    console.log(event)
     event.preventDefault()
 
-    const { email, password } = this.state
+    const { email, password, newUser, first_name, last_name } = this.state
 
     if ( !(email && password) ) return
 
-    const formInput = { email, password }
-    console.log(formInput)
-    API.login( formInput )
+    // const authMethod = newUser ? 'signup' : 'login'
+    const formInput = { email, password, first_name, last_name }
+
+    API.signup( formInput )
       .then( res => {
         const { errors, user } = res.data
 
@@ -41,21 +64,9 @@ class Login extends Component {
       .catch(console.error)
   }
 
-  componentDidMount() {
-    API.checkForSession()
-      .then( res => {
-        const { user } = res.data
-
-        if ( user ) {
-          AuthInterface.login( user )
-          this.setState({ loggedIn: true })
-        }
-      })
-      .catch(() => {})
-    }
-
   render() {
-    const { loggedIn } = this.state
+
+    const { loggedIn, newUser, errors, username, password } = this.state
 
     if ( loggedIn ) {
       return (
@@ -71,9 +82,9 @@ class Login extends Component {
         <Container fluid>
           <Row>
             <Col size="lg-12">
-              <span className="page-title">Log In</span>
+              <h1>Sign Up</h1>
               <br />
-              <LoginForm
+              <SignupForm
                 form={this}
               />
             </Col>
