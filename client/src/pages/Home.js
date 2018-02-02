@@ -6,6 +6,7 @@ import API from '../utils/API';
 import AuthInterface from '../utils/authInterface';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
+import Coins from '../components/CoinTable';
 
 class Home extends Component {
   state = {
@@ -51,7 +52,7 @@ class Home extends Component {
             <Col size="lg-12">
               <Jumbotron>
                 <Row>
-                  <Col size="lmd-2"></Col>
+                  <Col size="md-2"></Col>
                   <Col size="md-1">
                     <img src="/crypto.svg" className="logo"></img>
 
@@ -71,6 +72,17 @@ class Home extends Component {
             </Jumbotron>
           </Col>
         </Row>
+        
+        <Row>
+          <Col size="md-2"></Col>
+
+          <Col size="md-8">
+            <Coins />
+          </Col>
+
+          <Col size="md-2"></Col>
+        </Row>
+
       </Container>
       </div>
     );

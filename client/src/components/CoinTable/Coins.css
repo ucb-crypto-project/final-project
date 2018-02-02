@@ -1,0 +1,15 @@
+.coin-table {
+
+}
+
+	.coin-table tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD table columns  */
+	.coin-table tr:nth-child(odd){
+		background: #05264a;
+	}
+	/*  Define the background color for all the EVEN table columns  */
+	.coin-table tr:nth-child(even){
+		background: #0a2c12;
+	}

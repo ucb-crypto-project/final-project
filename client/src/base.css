@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-  color: #dbd9d9;
+  color: #28a745;
   text-align: center;
 }
 
@@ -28,6 +28,7 @@ h1 {
 
 .welcome-msg {
   text-align: center;
+  color: #197ab4;
 }
 
 
