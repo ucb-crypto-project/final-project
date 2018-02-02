@@ -167,13 +167,13 @@ class Chart extends Component {
     return (
       <div>
         <Container>
-          <h2>Current Price of {this.state.symbol} = ${this.state.current_price}</h2>
-          <h3>Amount Change Since  {this.state.fromDay}  -->  ${this.state.fromDayChange_amt},  ({this.state.fromDayChange_pct}%)</h3>
+          <h2>Current Price of {this.state.symbol} &nbsp;&nbsp;= &nbsp;&nbsp;${this.state.current_price}</h2>
+          <h3>Amount Change Since &nbsp; {this.state.fromDay} &nbsp;&nbsp;&nbsp;  ${this.state.fromDayChange_amt} &nbsp;&nbsp; ({this.state.fromDayChange_pct}%)</h3>
           <div className="col-lg-10">
             <VictoryChart padding={{ left: 60, top: 50, right: 0, bottom: 20 }}
               theme={VictoryTheme.material}
               height={300}
-              width={750}
+              width={700}
             >
 
               <VictoryLine
@@ -183,7 +183,11 @@ class Chart extends Component {
                 }}
                 data={this.state.data}
               />
-              <VictoryAxis styles={{labels: {fontSize: 30}}} dependentAxis tickFormat={(tick) => `$${(tick)}`}/>
+              <VictoryAxis 
+                styles={{labels: {fontSize: 30}} } 
+                dependentAxis tickFormat={(tick) => `$${(tick)}`}
+
+              />
             </VictoryChart>
             <HistoryBtn name='10' onClick={this.handle10Click} />
             <HistoryBtn name='30' onClick={this.handle30Click} />
