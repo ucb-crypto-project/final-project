@@ -6,4 +6,6 @@
 .history-btn {
   float: left;
   color: #4169e1;
+  padding: 10px 30px 10px 30px;
+  margin-right: 20px;
 }
