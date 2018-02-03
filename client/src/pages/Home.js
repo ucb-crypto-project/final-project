@@ -7,6 +7,7 @@ import AuthInterface from '../utils/authInterface';
 import { Col, Row, Container } from '../components/Grid';
 import { Input, TextArea, FormBtn } from '../components/Form';
 import Coins from '../components/CoinTable';
+import '../base.css';
 
 class Home extends Component {
   state = {
