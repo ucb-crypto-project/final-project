@@ -1,26 +1,46 @@
 .coin-table {
   table-layout: fixed;
   white-space: normal;
+  font-family: helvetica;
 }
 
 .coin-table thead tr {
   background: #171b1e;
   padding-bottom: 15px;
-}
-
-.coin-table tr {
-  padding-bottom: 30px;
+  font-family: helvetica;
 }
 
 .coin-table tr{
 	background: #031a34;
+  font-family: helvetica;
+  font-weight: lighter;
 }
 
 /*  Define the background color for all the EVEN table columns  */
 .coin-table tr:nth-child(even){
 	background: #071f0d;
+  font-family: helvetica;
 }
 
 .align-center {
   text-align: center;
+}
+
+.table thead th {
+    vertical-align: middle;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td, .table th {
+    padding: .575rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.historical {
+  text-align: center;
+}
+
+.tablebtn {
+  /* border-color: #171b1e; */
 }

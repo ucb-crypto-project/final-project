@@ -4,6 +4,7 @@ import Jumbotron from '../../components/Jumbotron';
 import API from '../../utils/API';
 import { Col, Row, Container } from '../../components/Grid';
 import '../../components/Buttons/Button.css';
+import './Chart.css';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine, VictoryContainer,
         VictoryTheme } from 'victory';
 
@@ -123,20 +124,20 @@ class Chart extends Component {
           fromDayChange_amt: fixedNum,
           fromDayChange_pct: fixedPct,
           current_price: current_fixed
-        }) 
+        })
       }
       else if (numDays === 30) {
         this.setState({
           thirty_day: formattedData,
-        }) 
+        })
       }
       else if (numDays === 90) {
-        
+
         this.setState({
           ninety_day: formattedData,
-        }) 
+        })
       }
-      
+
 
     })
     .catch(err => console.log(err));
@@ -186,17 +187,17 @@ class Chart extends Component {
 
               <VictoryLine
                 style={{
-                  data: { stroke: "#c43a31", strokeWidth: 4 },
+                  data: { stroke: "#c43a31", strokeWidth: 1.6 },
                   parent: { border: "2px solid #ccc"}
                 }}
                 data={this.state.data}
               />
-              <VictoryAxis 
+              <VictoryAxis
                 dependentAxis tickFormat={(tick) => `$${(tick)}`}
 
               />
             </VictoryChart>
-            
+
             <div className="btn btn-outline-success history-btn" onClick={this.handle10Click}> 10 Day</div>
             <div className="btn btn-outline-success history-btn" onClick={this.handle30Click}> 30 Day</div>
             <div className="btn btn-outline-success history-btn" onClick={this.handle90Click}> 90 Day</div>

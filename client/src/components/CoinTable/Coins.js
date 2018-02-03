@@ -84,11 +84,11 @@ export default class Coins extends Component {
             <table className="table coin-table" style={{ }}>
               <thead className="thead-inverse">
                 <tr>
-                  <th>Rank</th>
+                  <th>RANK</th>
                   <th>SYMBOL</th>
                   <th>NAME</th>
                   <th >PRICE ($)</th>
-                  <th>HISTORICAL CHART</th>
+                  <th className="historical">HISTORICAL CHART</th>
                 </tr>
               </thead>
               <tbody>
@@ -100,7 +100,7 @@ export default class Coins extends Component {
                       <td>{el.short}</td>
                       <td>${el.price}</td>
                       <td className="align-center">
-                        <Link to={`/charts/${el.short}`} className="btn btn-outline-primary my-2 my-sm-0">View</Link>
+                        <Link to={`/charts/${el.short}`} className="btn btn-outline-primary my-2 my-sm-0 tablebtn">View</Link>
                       </td>
                     </tr>
                   ))

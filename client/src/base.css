@@ -11,6 +11,7 @@ h1 {
 h3 {
   text-align: center;
   color: #9f1717;
+  font-family: helvetica;
 }
 
 .jumbotron {
@@ -26,7 +27,7 @@ h3 {
 
 .logo {
   width: 50px;
-  position: absolute;
+  position: relative;
   margin-left: 10%;
   margin-top: -15px;
   animation: float 4s ease-in-out infinite;
