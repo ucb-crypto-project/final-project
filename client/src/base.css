@@ -7,12 +7,13 @@ body {
 h1 {
   color: #28a745;
   text-align: center;
+  font-family: 'Encode Sans', sans-serif;
 }
 
 h3 {
   text-align: center;
   color: #9f1717;
-  font-family: helvetica;
+  font-family: 'Abel', sans-serif;
 }
 
 .jumbotron {

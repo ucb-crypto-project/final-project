@@ -8,6 +8,7 @@
 #nav .navbar-brand {
   color: #187ab9;
   transition: 1s ease;
+  font-family: 'Encode Sans', sans-serif;
 }
 
 #nav .navbar-brand:hover {
