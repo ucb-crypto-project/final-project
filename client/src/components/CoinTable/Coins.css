@@ -4,7 +4,12 @@
 }
 
 .coin-table thead tr {
-  background: #2f0606;
+  background: #171b1e;
+  padding-bottom: 15px;
+}
+
+.coin-table tr {
+  padding-bottom: 30px;
 }
 
 .coin-table tr{
