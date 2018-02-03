@@ -187,7 +187,7 @@ class Chart extends Component {
 
               <VictoryLine
                 style={{
-                  data: { stroke: "#c43a31", strokeWidth: 1.8 },
+                  data: { stroke: "#c43a31", strokeWidth: 2.5 },
                   parent: { border: "2px solid #ccc"}
                 }}
                 data={this.state.data}
