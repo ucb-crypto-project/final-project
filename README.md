@@ -1,5 +1,5 @@
-# final-project
-Final Project for the UC Berkeley Bootcamp
+# CryptoX
+A cryptocurrency app built with React, MongoDB, and Node.js
 
 
 ## Setup Instructions
